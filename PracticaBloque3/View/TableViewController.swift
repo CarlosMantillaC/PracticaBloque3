@@ -8,6 +8,7 @@
 import UIKit
 
 class TableViewController: UIViewController {
+
     
     var presenter: TablePresenter!
     let userService = UserService()
@@ -33,6 +34,19 @@ class TableViewController: UIViewController {
         return button
         
     }()
+    
+    private lazy var buttonKVO: UIButton = {
+        
+        var configuratcion = UIButton.Configuration.plain()
+        configuratcion.title = "Navegar a KVO"
+        
+        let button = UIButton(type: .system, primaryAction: UIAction(handler: { _ in self.navegateKVO() }))
+        button.configuration = configuratcion
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+        
+    }()
+
 
 
     override func viewDidLoad() {
@@ -40,33 +54,41 @@ class TableViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        presenter = TablePresenter()
+        presenter = TablePresenter(view: self)
                 
-        [tableView, buttonEditText].forEach(view.addSubview)
+        [tableView, buttonEditText, buttonKVO].forEach(view.addSubview)
         
         NSLayoutConstraint.activate([
         
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: buttonEditText.topAnchor, constant: 24),
+            tableView.bottomAnchor.constraint(equalTo: buttonKVO.topAnchor, constant: 24),
+            
+            buttonKVO.bottomAnchor.constraint(equalTo: buttonEditText.topAnchor),
+            buttonKVO.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             buttonEditText.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             buttonEditText.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             
         ])
-
-        Logger.shared.log(message: "ViewController cargado")
-        
-        userService.login(usuario: "Carlos")
-        
-        Logger.shared.mostrarHistorial()
-                
+    
+        presenter.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(handleLogout), name: .logout, object: nil)
     }
 
     func navegateMainEdit() {
         self.navigationController?.pushViewController(MainEditViewController(), animated: true)
     }
+    
+    func navegateKVO() {
+        self.navigationController?.pushViewController(KVOViewController(), animated: true)
+    }
+    
+    @objc func handleLogout() {
+        print("Sesión cerrada detectada")
+    }
+
 }
 
 extension TableViewController: UITableViewDataSource {
@@ -96,6 +118,18 @@ extension TableViewController: Accions {
         }
         
         print("reproduciendo en la celda \(indexPath.row+1)")
+    }
+    
+}
+
+extension TableViewController: TableViewDelegate {
+    
+    func showUser(nombre: String) {
+        print("Usuario actual: \(nombre)")
+    }
+    
+    func withoutSession() {
+        print("No hay sesión activa")
     }
     
 }

@@ -14,6 +14,10 @@ protocol Accions: AnyObject {
 
 class TableViewCell: UITableViewCell {
     
+    deinit {
+        print("deinit TableViewCell")
+    }
+    
     weak var delegate: Accions?
     
     let label: UILabel = {
@@ -31,7 +35,7 @@ class TableViewCell: UITableViewCell {
         configuration.title = "boton"
         configuration.buttonSize = .medium
         
-        let button = UIButton(type: .system, primaryAction: UIAction(handler: { _ in self.buttonTapped() } ))
+        let button = UIButton(type: .system, primaryAction: UIAction(handler: { [weak self] _ in self?.buttonTapped() } ))
         button.configuration = configuration
         button.translatesAutoresizingMaskIntoConstraints = false
         

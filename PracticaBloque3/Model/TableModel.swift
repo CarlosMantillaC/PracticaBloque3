@@ -16,6 +16,8 @@ class TableModel {
         ObjectCell(title: "3"),
         ObjectCell(title: "4"),
         ObjectCell(title: "5"),
+        ObjectCell(title: "6"),
+
     
     ]
     

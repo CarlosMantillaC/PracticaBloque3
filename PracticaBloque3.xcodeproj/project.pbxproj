@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C476BA1B2E0330B9005A7763 /* SecondEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476BA1A2E0330B9005A7763 /* SecondEditViewController.swift */; };
+		C476BA1D2E034666005A7763 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476BA1C2E034666005A7763 /* SessionManager.swift */; };
+		C476BA1F2E035520005A7763 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476BA1E2E035520005A7763 /* Notifications.swift */; };
+		C476BA212E036C4A005A7763 /* KVOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476BA202E036C4A005A7763 /* KVOViewController.swift */; };
 		C47AFE262E01EBE800395D8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47AFE1C2E01EBE800395D8D /* AppDelegate.swift */; };
 		C47AFE272E01EBE800395D8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47AFE232E01EBE800395D8D /* SceneDelegate.swift */; };
 		C47AFE282E01EBE800395D8D /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47AFE242E01EBE800395D8D /* TableViewController.swift */; };
@@ -41,6 +44,9 @@
 
 /* Begin PBXFileReference section */
 		C476BA1A2E0330B9005A7763 /* SecondEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondEditViewController.swift; sourceTree = "<group>"; };
+		C476BA1C2E034666005A7763 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		C476BA1E2E035520005A7763 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		C476BA202E036C4A005A7763 /* KVOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVOViewController.swift; sourceTree = "<group>"; };
 		C47AFDE82E01E72A00395D8D /* PracticaBloque3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PracticaBloque3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C47AFDFE2E01E72B00395D8D /* PracticaBloque3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticaBloque3Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C47AFE082E01E72B00395D8D /* PracticaBloque3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticaBloque3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +145,7 @@
 				C47AFE342E01EF1600395D8D /* TableViewCell.swift */,
 				C4BF38E22E02188F004F7A10 /* MainEditViewController.swift */,
 				C476BA1A2E0330B9005A7763 /* SecondEditViewController.swift */,
+				C476BA202E036C4A005A7763 /* KVOViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -158,6 +165,8 @@
 				C47AFE322E01EE7500395D8D /* TableModel.swift */,
 				C47AFE382E02063100395D8D /* Logger.swift */,
 				C47AFE3A2E020BF600395D8D /* UserService.swift */,
+				C476BA1C2E034666005A7763 /* SessionManager.swift */,
+				C476BA1E2E035520005A7763 /* Notifications.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -307,8 +316,11 @@
 			files = (
 				C47AFE262E01EBE800395D8D /* AppDelegate.swift in Sources */,
 				C47AFE272E01EBE800395D8D /* SceneDelegate.swift in Sources */,
+				C476BA1D2E034666005A7763 /* SessionManager.swift in Sources */,
+				C476BA212E036C4A005A7763 /* KVOViewController.swift in Sources */,
 				C47AFE3B2E020BF600395D8D /* UserService.swift in Sources */,
 				C476BA1B2E0330B9005A7763 /* SecondEditViewController.swift in Sources */,
+				C476BA1F2E035520005A7763 /* Notifications.swift in Sources */,
 				C4BF38E32E02188F004F7A10 /* MainEditViewController.swift in Sources */,
 				C47AFE282E01EBE800395D8D /* TableViewController.swift in Sources */,
 				C47AFE352E01EF1600395D8D /* TableViewCell.swift in Sources */,

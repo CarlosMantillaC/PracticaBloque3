@@ -11,6 +11,11 @@ import UIKit
 
 class MainEditViewController: UIViewController {
     
+    deinit {
+        print("MainEditViewController ha sido liberado de memoria")
+    }
+
+    
     private let label: UILabel = {
        
         let label = UILabel()
@@ -29,7 +34,7 @@ class MainEditViewController: UIViewController {
         configuration.title = "Editar"
         configuration.titleAlignment = .center
         
-        let button = UIButton(type: .system, primaryAction: UIAction(handler: { _ in self.openEditor() } ))
+        let button = UIButton(type: .system, primaryAction: UIAction(handler: { [weak self] _ in self?.openEditor() } ))
         button.configuration = configuration
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

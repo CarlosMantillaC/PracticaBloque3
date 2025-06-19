@@ -14,6 +14,11 @@ protocol SecondViewControllerDelegate: AnyObject {
 
 class SecondEditViewController: UIViewController {
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+        print("SecondEditViewController ha sido liberado de memoria")
+    }
+    
     weak var delegate: SecondViewControllerDelegate?
     var initialText: String?
     
@@ -32,7 +37,7 @@ class SecondEditViewController: UIViewController {
         configuration.title = "Guardar"
         configuration.titleAlignment = .center
         
-        let button = UIButton(type: .system, primaryAction: UIAction(handler: { _ in self.saveText() }))
+        let button = UIButton(type: .system, primaryAction: UIAction(handler: { [weak self] _ in self?.saveText() }))
         button.configuration = configuration
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -40,7 +45,7 @@ class SecondEditViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .systemBackground
         
         textField.text = initialText
@@ -48,15 +53,17 @@ class SecondEditViewController: UIViewController {
         [textField, saveButton].forEach(view.addSubview)
         
         NSLayoutConstraint.activate([
-        
+            
             textField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             textField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
             textField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
             
             saveButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24),
             saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-    
+            
         ])
+        
+        SessionManager.shared.logout()
     }
 
     func saveText() {
@@ -64,6 +71,9 @@ class SecondEditViewController: UIViewController {
             delegate?.didUpdateText(text: text)
         }
         dismiss(animated: true)
-    }  
-
+    }
+    
+    @objc func handleSesionCerrada() {
+        print("Sesión cerrada detectada")
+    }
 }
