@@ -18,4 +18,3 @@ final class ThemeManager {
         NotificationCenter.default.post(name: .themeChanged, object: nil, userInfo: ["theme": currentTheme])
     }
 }
-
