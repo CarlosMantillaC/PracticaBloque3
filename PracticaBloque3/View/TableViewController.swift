@@ -8,10 +8,11 @@
 import UIKit
 
 class TableViewController: UIViewController {
-
+    
     
     var presenter: TablePresenter!
     let userService = UserService()
+    let themePresenter = ThemePresenter()
     
     private lazy var tableView: UITableView = {
         
@@ -46,24 +47,39 @@ class TableViewController: UIViewController {
         return button
         
     }()
-
-
-
+    
+    private lazy var buttonTheme: UIButton = {
+        
+        var configuratcion = UIButton.Configuration.plain()
+        configuratcion.title = "Navegar a Theme"
+        
+        let button = UIButton(type: .system, primaryAction: UIAction(handler: { _ in self.navegateTheme() }))
+        button.configuration = configuratcion
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+        
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        NotificationCenter.default.addObserver(self, selector: #selector(themeChanged), name: .themeChanged, object: nil)
+        
+        applyTheme(themePresenter.getCurrentTheme())
         
         presenter = TablePresenter(view: self)
-                
-        [tableView, buttonEditText, buttonKVO].forEach(view.addSubview)
+        
+        [tableView, buttonEditText, buttonKVO, buttonTheme].forEach(view.addSubview)
         
         NSLayoutConstraint.activate([
-        
+            
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: buttonKVO.topAnchor, constant: 24),
+            tableView.bottomAnchor.constraint(equalTo: buttonTheme.topAnchor, constant: -24),
+            
+            buttonTheme.bottomAnchor.constraint(equalTo: buttonKVO.topAnchor),
+            buttonTheme.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             buttonKVO.bottomAnchor.constraint(equalTo: buttonEditText.topAnchor),
             buttonKVO.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -72,11 +88,11 @@ class TableViewController: UIViewController {
             buttonEditText.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             
         ])
-    
+        
         presenter.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(handleLogout), name: .logout, object: nil)
     }
-
+    
     func navegateMainEdit() {
         self.navigationController?.pushViewController(MainEditViewController(), animated: true)
     }
@@ -85,10 +101,28 @@ class TableViewController: UIViewController {
         self.navigationController?.pushViewController(KVOViewController(), animated: true)
     }
     
+    func navegateTheme() {
+        self.navigationController?.pushViewController(ThemeSwitcherViewController(), animated: true)
+    }
+    
     @objc func handleLogout() {
         print("Sesión cerrada detectada")
     }
-
+    
+    @objc func themeChanged(notification: Notification) {
+        let theme = themePresenter.getCurrentTheme()
+        applyTheme(theme)
+    }
+    
+    func applyTheme(_ theme: ThemeType) {
+        switch theme {
+        case .light:
+            view.backgroundColor = .white
+        case .dark:
+            view.backgroundColor = .black
+        }
+    }
+    
 }
 
 extension TableViewController: UITableViewDataSource {
@@ -112,7 +146,7 @@ extension TableViewController: UITableViewDataSource {
 
 extension TableViewController: Accions {
     func reproductiveButton(cell: TableViewCell) {
-
+        
         guard let indexPath = tableView.indexPath(for: cell) else {
             return
         }

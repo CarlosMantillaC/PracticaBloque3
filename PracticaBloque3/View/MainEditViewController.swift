@@ -15,12 +15,13 @@ class MainEditViewController: UIViewController {
         print("MainEditViewController ha sido liberado de memoria")
     }
 
-    
+    let themePresenter = ThemePresenter()
+
     private let label: UILabel = {
        
         let label = UILabel()
         label.text = "Texto Original"
-        label.textColor = .label
+        label.textColor = .red
         label.textAlignment = .center
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +44,9 @@ class MainEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
+        NotificationCenter.default.addObserver(self, selector: #selector(themeChanged), name: .themeChanged, object: nil)
+        
+        applyTheme(themePresenter.getCurrentTheme())
         
         [label, editButton].forEach(view.addSubview)
         
@@ -64,6 +67,20 @@ class MainEditViewController: UIViewController {
         secondVC.initialText = label.text
         secondVC.delegate = self
         present(secondVC, animated: true)
+    }
+    
+    @objc func themeChanged(notification: Notification) {
+        let theme = themePresenter.getCurrentTheme()
+        applyTheme(theme)
+    }
+    
+    func applyTheme(_ theme: ThemeType) {
+        switch theme {
+        case .light:
+            view.backgroundColor = .white
+        case .dark:
+            view.backgroundColor = .black
+        }
     }
 }
 
