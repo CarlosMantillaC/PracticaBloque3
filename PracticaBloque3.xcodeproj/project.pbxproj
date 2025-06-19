@@ -11,7 +11,6 @@
 		C476BA1D2E034666005A7763 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476BA1C2E034666005A7763 /* SessionManager.swift */; };
 		C476BA1F2E035520005A7763 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476BA1E2E035520005A7763 /* Notifications.swift */; };
 		C476BA212E036C4A005A7763 /* KVOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476BA202E036C4A005A7763 /* KVOViewController.swift */; };
-		C476BA2F2E045429005A7763 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476BA2E2E045429005A7763 /* ThemeManager.swift */; };
 		C476BA312E045891005A7763 /* ThemePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476BA302E045891005A7763 /* ThemePresenter.swift */; };
 		C476BA332E045C2C005A7763 /* ThemeSwitcherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476BA322E045C2C005A7763 /* ThemeSwitcherViewController.swift */; };
 		C47AFE262E01EBE800395D8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47AFE1C2E01EBE800395D8D /* AppDelegate.swift */; };
@@ -25,6 +24,7 @@
 		C47AFE372E01F24100395D8D /* TablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47AFE362E01F24100395D8D /* TablePresenter.swift */; };
 		C47AFE392E02063100395D8D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47AFE382E02063100395D8D /* Logger.swift */; };
 		C47AFE3B2E020BF600395D8D /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47AFE3A2E020BF600395D8D /* UserService.swift */; };
+		C4849B122E048AAB00EEB8C6 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4849B112E048AAB00EEB8C6 /* ThemeManager.swift */; };
 		C4BF38E32E02188F004F7A10 /* MainEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BF38E22E02188F004F7A10 /* MainEditViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,7 +50,6 @@
 		C476BA1C2E034666005A7763 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		C476BA1E2E035520005A7763 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		C476BA202E036C4A005A7763 /* KVOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVOViewController.swift; sourceTree = "<group>"; };
-		C476BA2E2E045429005A7763 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		C476BA302E045891005A7763 /* ThemePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePresenter.swift; sourceTree = "<group>"; };
 		C476BA322E045C2C005A7763 /* ThemeSwitcherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSwitcherViewController.swift; sourceTree = "<group>"; };
 		C47AFDE82E01E72A00395D8D /* PracticaBloque3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PracticaBloque3.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +67,7 @@
 		C47AFE362E01F24100395D8D /* TablePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablePresenter.swift; sourceTree = "<group>"; };
 		C47AFE382E02063100395D8D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		C47AFE3A2E020BF600395D8D /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		C4849B112E048AAB00EEB8C6 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		C4BF38E22E02188F004F7A10 /* MainEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,7 +175,7 @@
 				C47AFE3A2E020BF600395D8D /* UserService.swift */,
 				C476BA1C2E034666005A7763 /* SessionManager.swift */,
 				C476BA1E2E035520005A7763 /* Notifications.swift */,
-				C476BA2E2E045429005A7763 /* ThemeManager.swift */,
+				C4849B112E048AAB00EEB8C6 /* ThemeManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -325,7 +325,6 @@
 			files = (
 				C47AFE262E01EBE800395D8D /* AppDelegate.swift in Sources */,
 				C47AFE272E01EBE800395D8D /* SceneDelegate.swift in Sources */,
-				C476BA2F2E045429005A7763 /* ThemeManager.swift in Sources */,
 				C476BA1D2E034666005A7763 /* SessionManager.swift in Sources */,
 				C476BA212E036C4A005A7763 /* KVOViewController.swift in Sources */,
 				C47AFE3B2E020BF600395D8D /* UserService.swift in Sources */,
@@ -334,6 +333,7 @@
 				C4BF38E32E02188F004F7A10 /* MainEditViewController.swift in Sources */,
 				C47AFE282E01EBE800395D8D /* TableViewController.swift in Sources */,
 				C476BA312E045891005A7763 /* ThemePresenter.swift in Sources */,
+				C4849B122E048AAB00EEB8C6 /* ThemeManager.swift in Sources */,
 				C47AFE352E01EF1600395D8D /* TableViewCell.swift in Sources */,
 				C47AFE372E01F24100395D8D /* TablePresenter.swift in Sources */,
 				C47AFE312E01EDAB00395D8D /* ObjectCell.swift in Sources */,
